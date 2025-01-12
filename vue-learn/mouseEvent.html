@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            padding:100px 0 ;
+            width: 400px;
+            text-align:center;
+            background-color: #ddd;
+            margin: 28px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+<div @mouseover="handleEvent($event, 5)" class="box">mouseOver (enter)</div>
+<div @mouseleave="handleEvent" class="box">mouseLeave</div>
+<div @dblclick="handleEvent" class="box">doubleClick</div>
+<div @mousemove="handleMousemove" class="box">position X:{{x}} - Y:{{y}}</div>
+</div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                age:45,
+                x:0,
+                y:0
+
+            }
+        },
+        methods : {
+            handleEvent(e, data){
+                console.log(e, e.type)
+                if(data){
+                    console.log(data)
+                }
+            },
+            handleMousemove(e){
+                this.x = e.offsetX,
+                this.y = e.offsetY
+            }
+        }
+      
+    })
+app.mount('#app')
+</script>
+</body>
+</html>

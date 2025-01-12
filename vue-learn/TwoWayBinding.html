@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div id="app">
-<h1 style="text-align: center;"></h1>
-<h3>{{message}}</h3>
-<input type="text" v-model="message" style="width: 100%; padding: 10px; font-size: 20px; margin-top: 20px;">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1 style="text-align: center;"></h1>
+            <h3>{{message}}</h3>
+            <br>
+            <h1>{{'Random Number:' + Math.ceil(Math.random()*6)}}</h1>
+            <input type="text" v-model="message"
+                style="width: 100%; padding: 10px; font-size: 20px; margin-top: 20px;">
 
-
-
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <script>
+            <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+            <script>
 
             const app =Vue.createApp({
                 data(){
@@ -28,6 +29,6 @@
         })
         app.mount('#app')
         </script>
-    </div>
-</body>
+        </div>
+    </body>
 </html>

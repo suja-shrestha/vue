@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+    <body>
+        <div id="app">
+           <div v-if="showBooks">
+            <p>{{title}} - {{author}} - {{age}}</p>
+           </div>
+           <button @click="toggleShowBooks"><span v-if="showBooks">Hide Books</span><span v-else>Show Books</span></button>
+           <div v-show="showBooks">currently showing books</div>
+        </div>
+
+
+
+        <script>
+            
+    const app = Vue.createApp({
+        data(){
+         return {
+            showBooks: true,
+             title: 'The Final Empire',
+             author: 'Brandon Sanderson',
+             age : 45
+         }
+        },
+        methods: {
+            toggleShowBooks(){
+                this.showBooks = !this.showBooks
+            }
+           
+     
+            
+        }
+         
+     })
+     
+         app.mount('#app')</script>
+    </body>
+</html>

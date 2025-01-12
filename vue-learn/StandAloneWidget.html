@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h2>{{title}} - {{author}} - {{age}}</h2>
+            <button v-on:click="age++">increase age</button>
+            <button v-on:click="age--">Decrease age</button>
+            <div @click='changeTitle("Oathbringer")'>change book title</div>
+        </div>
+        <script>const app = Vue.createApp({
+        data(){
+         return {
+             title: 'The Final Empire',
+             author: 'Brandon Sanderson',
+             age : 45
+         }
+        },
+        methods: {
+            changeTitle(title){
+                this.title = title
+                <!-- this.title = 'Words of Radiance' -->
+                console.log('Title has been changed')
+     
+            }
+        }
+         
+     })
+     
+         app.mount('#app')</script>
+    </body>
+</html>

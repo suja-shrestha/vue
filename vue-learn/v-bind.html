@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+.bg-red {
+    color: red;
+}
+    </style>
+    </head>
+    <body>
+
+        <div id="app">
+            <h1 v-bind:class="vuebg">{{message}}</h1>
+        </div>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script>
+    const app = Vue.createApp({
+        data(){
+            return{
+vuebg: "bg-red",
+message : "Hello World"
+            }
+        }
+    })
+    app.mount('#app')
+</script>
+
+    </body>
+</html>
