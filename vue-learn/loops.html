@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+<ol>
+    <li v-for="x in manyFood" >{{x}}</li>
+    <li v-for="x in manyFood" v-bind:src="x">{{x}}</li>
+</ol>
+
+
+</div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+const app = Vue.createApp({
+    data(){
+        return{
+            manyFood: ['Rice', 'Beans', 'Yam', 'Egusi', 'Okro', 'Amala', 'Ewedu', 'Pounded Yam', 'Fufu', 'Semovita'],
+            manyImg: ['rice.jpg', 'beans.jpg', 'Yam.jpg', 'Egusi.jpg', 'Okro.jpg', 'Amala.jpg', 'Ewedu.jpg', 'Pounded Yam.jpg', 'Fufu.jpg', 'Semovita.jpg']
+        }
+    }
+})
+app.mount('#app')
+</script>
+</body>
+</html>
