@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue.js Example</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                max-width: 800px;
+                margin: 20px auto;
+                background: white;
+            }
+ul {
+                padding: 0;
+            }
+            li {
+                list-style: none;
+                margin: 10px 0;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                display: flex;
+                justify-content: space-between;
+
+
+            }
+            li > img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                margin-right: 10px;
+            }
+            .fav {
+                background: #d7a4a4;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <!-- attribute binding -->
+             <a v-bind:href="url">visit</a>
+            <ol>
+                <li v-for="x in manyFood" :key="x">{{ x }}</li>
+                <li v-for="x in manyImg" :key="x">
+                    <img :src="x" :alt="x" />
+                </li>
+            </ol>
+            <ul>
+                <li v-for="book in books" :class="{fav: book.isfav}" :key="book.title">
+                    <img :src="book.img" alt="">
+                    <h3>{{ book.title }}</h3>
+                    <div v-if="showBooks">
+                        <p>{{ book.author }}</p>
+                        <p>{{ book.age }}</p>
+                    </div>
+
+                </li>
+            </ul>
+            <button @click="Show">
+                <span v-if="showBooks">Hide</span>
+                <span v-else>Show</span>
+            </button>
+        </div>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    url: 'https://www.facebook.com',
+                    manyFood: ['Rice', 'Beans', 'Yam', 'Egusi', 'Okro', 'Amala', 'Ewedu', 'Pounded Yam', 'Fufu', 'Semovita'],
+                    manyImg: ['rice.jpg', 'beans.jpg', 'yam.jpg', 'egusi.jpg', 'okro.jpg', 'amala.jpg', 'ewedu.jpg', 'pounded_yam.jpg', 'fufu.jpg', 'semovita.jpg'],
+                    showBooks: true,
+                    books: [
+                        { title: 'The Final Empire', author: 'Brandon Sanderson', age: 45, img:'assets/rice.jpg', isfav: true },
+                        { title: 'The Final', author: 'Brandon Sander', age: 40, img:'assets/beans.jpg', isfav: false },
+                        { title: 'The Final Empire of the Night', author: 'Sanderson', age: 55, img:'assets/rice.jpg',isfav: true },
+                    ]
+                };
+            },
+            methods: {
+                Show() {
+                    this.showBooks = !this.showBooks;
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+    </body>
+</html>

@@ -1,31 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<div id="app">
-<ol>
-    <li v-for="x in manyFood" >{{x}}</li>
-    <li v-for="x in manyFood" v-bind:src="x">{{x}}</li>
-</ol>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue.js Example</title>
+    </head>
+    <body>
+        <div id="app">
+            <ol>
+                <li v-for="x in manyFood" :key="x">{{ x }}</li>
+                <li v-for="x in manyImg" :key="x">
+                    <img :src="x" :alt="x" />
+                </li>
+            </ol>
+            <ul>
+                <li v-for="book in books" :key="book.title">
+                    <h3>{{ book.title }}</h3>
+                    <div v-if="showBooks">
+                        <p>{{ book.author }}</p>
+                        <p>{{ book.age }}</p>
+                    </div>
 
+                </li>
+            </ul>
+            <button @click="Show">
+                <span v-if="showBooks">Hide</span>
+                <span v-else>Show</span>
+            </button>
+        </div>
 
-</div>
-
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script>
-const app = Vue.createApp({
-    data(){
-        return{
-            manyFood: ['Rice', 'Beans', 'Yam', 'Egusi', 'Okro', 'Amala', 'Ewedu', 'Pounded Yam', 'Fufu', 'Semovita'],
-            manyImg: ['rice.jpg', 'beans.jpg', 'Yam.jpg', 'Egusi.jpg', 'Okro.jpg', 'Amala.jpg', 'Ewedu.jpg', 'Pounded Yam.jpg', 'Fufu.jpg', 'Semovita.jpg']
-        }
-    }
-})
-app.mount('#app')
-</script>
-</body>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    manyFood: ['Rice', 'Beans', 'Yam', 'Egusi', 'Okro', 'Amala', 'Ewedu', 'Pounded Yam', 'Fufu', 'Semovita'],
+                    manyImg: ['rice.jpg', 'beans.jpg', 'Yam.jpg', 'Egusi.jpg', 'Okro.jpg', 'Amala.jpg', 'Ewedu.jpg', 'Pounded Yam.jpg', 'Fufu.jpg', 'Semovita.jpg'],
+                    showBooks: true,
+                    books: [
+                        { title: 'The Final Empire', author: 'Brandon Sanderson', age: 45 },
+                        { title: 'The Final', author: 'Brandon Sander', age: 40 },
+                        { title: 'The Final Empire of the Night', author: 'Sanderson', age: 55 },
+                    ]
+                };
+            },
+            methods: {
+                Show() {
+                    this.showBooks = !this.showBooks;
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+    </body>
 </html>

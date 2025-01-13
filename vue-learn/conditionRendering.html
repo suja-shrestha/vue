@@ -10,6 +10,7 @@
         <div id="app">
            <div v-if="showBooks">
             <p>{{title}} - {{author}} - {{age}}</p>
+            
            </div>
            <button @click="toggleShowBooks"><span v-if="showBooks">Hide Books</span><span v-else>Show Books</span></button>
            <div v-show="showBooks">currently showing books</div>
