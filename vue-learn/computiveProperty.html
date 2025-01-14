@@ -40,6 +40,7 @@ ul {
     </head>
     <body>
         <div id="app">
+            <p>{{filteredBooks}}</p>
             <!-- attribute binding -->
             <a v-bind:href="url">visit</a>
             <ol>
@@ -49,7 +50,7 @@ ul {
                 </li>
             </ol>
             <ul>
-                <li v-for="book in books" :class="{fav: book.isfav} " @click="togglefav(book    )"
+                <li v-for="book in filteredBooks" :class="{fav: book.isfav} " @click="togglefav(book    )"
                     :key="book.title">
                     <img :src="book.img" alt>
                     <h3>{{ book.title }}</h3>
@@ -88,6 +89,11 @@ ul {
                 },
                 togglefav(book){
                     book.isfav = !book.isfav
+                }
+            },
+            computed: {
+                filteredBooks() {
+                    return this.books.filter((book) => book.isfav);
                 }
             }
         });
