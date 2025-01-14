@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <h1>Click to see message</h1>
+    <div id="app">
+        <!-- Conditionally render the paragraph based on the value of 'seen' -->
+        <p v-if="seen">{{ text }}</p>
+        <!-- Button to toggle the message visibility and change text -->
+        <button @click="writeMessage">
+            <span v-if="seen">Hide</span> 
+            <span v-else>See</span>
+        </button>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    text: '',
+                    seen: false
+                }
+            },
+            methods: {
+                writeMessage() {
+                    // Set the text and toggle the visibility
+                    this.text = 'hello';
+                    this.seen = !this.seen;
+                }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+</html>
